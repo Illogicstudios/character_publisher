@@ -1,6 +1,6 @@
-# Template Tool
+# Character Publisher
 
-> Template is a tool to ...
+> Character Publisher is a tool to publish character models and character shaders
 
 ## How to install
 
@@ -17,28 +17,15 @@ if __name__ == '__main__':
 
 ---
 
-## Features
-
-### First Part
+## Publish
 
 <div align="center">
   <span>
-    <img src="https://user-images.githubusercontent.com/94440879/216031775-d9ea680f-9a91-4f19-bc4c-6dd7fae4aa6b.png" width=50%>
+    <img src="https://user-images.githubusercontent.com/117286626/232508535-825355c9-a3cc-4586-af6a-ed8be39197f3.png" width=90%>
   </span>
-  <p weight="bold">Caption</p>
+  <p weight="bold">User interface of the Character Publisher</p>
   <br/>
 </div>
 
-[...]
-
-### Second Part
-
-<div align="center">
-  <span>
-    <img src="https://user-images.githubusercontent.com/94440879/216031775-d9ea680f-9a91-4f19-bc4c-6dd7fae4aa6b.png" width=50%>
-  </span>
-  <p weight="bold">Caption</p>
-  <br/>
-</div>
-
-[...]
+You can publish the model of the character and/or the look of it. You can also publish additional looks by specifying
+a look name.

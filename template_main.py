@@ -7,9 +7,8 @@ if __name__ == '__main__':
     if not sys.path.__contains__(install_dir):
         sys.path.append(install_dir)
 
-    # TODO import right modules
     modules = [
-        "MayaTool"
+        "CharacterPublisher"
     ]
 
     from utils import *
@@ -18,13 +17,11 @@ if __name__ == '__main__':
     for module in modules:
         importlib.import_module(module)
 
-    # TODO import the app
-    from MayaTool import *
+    from CharacterPublisher import *
 
-    # TODO rename app variable and Class
     try:
-        app.close()
+        character_publisher.close()
     except:
         pass
-    app = MayaTool()
-    app.show()
+    character_publisher = CharacterPublisher()
+    character_publisher.show()
