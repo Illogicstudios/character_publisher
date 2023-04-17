@@ -190,19 +190,16 @@ class CharacterPublisher(QDialog):
         pass
 
     def hideEvent(self, arg__1: QCloseEvent) -> None:
-        print("b")
         self.__remove_callback()
         self.__save_prefs()
 
     def __add_callback(self):
-        print("a")
         self.__selection_callback = \
             OpenMaya.MEventMessage.addEventCallback("SelectionChanged", self.__on_selection_changed)
 
     # Remove the selection callback
     def __remove_callback(self):
         if self.__selection_callback is not None:
-            print("c")
             OpenMaya.MMessage.removeCallback(self.__selection_callback)
 
     # Guess the asset directory and name from the current scene name.
@@ -524,7 +521,6 @@ class CharacterPublisher(QDialog):
     def __on_publish(self):
         CharacterPublisher.__check_color_sets("Pref")
         self.__replace_texture_node_to_tx()
-        print_var(self.__abc_dir, self.__abc_name, self.__asset_dir, self.__asset_name)
         if self.__publish_uv:
             standin = self.abc_export()
         else:
