@@ -375,14 +375,14 @@ class CharacterPublisher(QDialog):
         return standin
 
     # Build shader for look
-    def __build_shader_operator(self, standin):
+    def __build_shader_operator(self, standin, sel):
         # Get the selected objects
         ai_merge = pm.createNode("aiMerge", n="aiMerge_%s" % standin.getParent().name())
         empty_displace = None
         shaders_used = []
         pm.addAttr(ai_merge, ln="mtoa_constant_is_target", attributeType="bool", defaultValue=True)
         pm.connectAttr(ai_merge + ".out", standin + ".operators[0]")
-        meshes = pm.listRelatives(self.__selection, allDescendents=True, shapes=True)
+        meshes = pm.listRelatives(sel, allDescendents=True, shapes=True)
         for m in meshes:
             if "ShapeOrig" in m.name():
                 meshes.remove(m)
@@ -521,14 +521,15 @@ class CharacterPublisher(QDialog):
     def __on_publish(self):
         CharacterPublisher.__check_color_sets("Pref")
         self.__replace_texture_node_to_tx()
+        sel = self.__selection
         if self.__publish_uv:
             standin = self.abc_export()
         else:
             standin = pm.createNode("aiStandIn", n="tmp_standin")
 
         if self.__publish_look:
-            shaders_used = self.__build_shader_operator(standin)
+            shaders_used = self.__build_shader_operator(standin, sel)
             self.__export_arnold_graph(standin, shaders_used)
 
-        if not self.__publish_uv:
-            pm.delete(standin.getTransform())
+        # if not self.__publish_uv:
+        #     pm.delete(standin.getTransform())
